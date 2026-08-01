@@ -1,0 +1,4 @@
+# Final ticker universe -- fill in during Week 1, Day 6-7.
+# One ticker per line, with sector as a comment or in a second column.
+# Keep this file in version control even though other raw data is gitignored --
+# it documents exactly which assets were used, for reproducibility.

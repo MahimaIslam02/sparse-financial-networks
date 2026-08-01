@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{booktabs}
+
+\title{Sparse Statistical Learning for High-Dimensional Financial Data:\\
+A Preliminary Study of Conditional Dependency Networks}
+\author{Mahima Islam}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% TODO (Week 4, Step 11): ~150 words. State the question, method, and finding
+% in one sentence each. Write this LAST, after Results are done.
+\end{abstract}
+
+\section{Introduction}
+% TODO: Why sparse estimation matters for high-dimensional financial data.
+% - The curse of dimensionality: when the number of assets p is comparable to
+%   or exceeds the number of observations n, the sample covariance matrix is
+%   ill-conditioned or singular.
+% - Sparsity assumption: most pairs of assets are conditionally independent
+%   given the rest -- economically plausible (most companies don't directly
+%   drive each other once broad market/sector factors are accounted for).
+% - Cite 4-6 papers from your Week 1 literature scan here, e.g. \citep{key1}.
+% - State your research question explicitly at the end of this section.
+
+\section{Data and Methods}
+
+\subsection{Data}
+% TODO: ticker universe, source (Yahoo Finance), date range, frequency,
+% missing-data handling. Reference Table~\ref{tab:summary} if you add one.
+
+\subsection{Sparse Precision Matrix Estimation}
+% TODO: Define the Graphical Lasso objective:
+% \[
+%   \hat{\Theta} = \arg\max_{\Theta \succ 0} \; \log\det\Theta -
+%   \mathrm{tr}(S\Theta) - \lambda \|\Theta\|_1
+% \]
+% where $S$ is the sample covariance matrix and $\lambda$ controls sparsity.
+% Explain the cross-validation procedure used to select $\lambda$.
+
+\subsection{Regime Comparison}
+% TODO: describe the two (or more) time windows compared and why they were chosen.
+
+\subsection{Stability Selection}
+% TODO: describe the bootstrap resampling procedure and the stability threshold used.
+
+\section{Results}
+
+\subsection{Baseline Comparison}
+% TODO: naive sample correlation vs. Ridge-regularized vs. sparse.
+% Figure~\ref{fig:heatmap} here.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../results/figures/01_correlation_heatmap.png}
+    \caption{Naive sample correlation matrix across the asset universe.}
+    \label{fig:heatmap}
+\end{figure}
+
+\subsection{Sparse Network Structure}
+% TODO: describe the estimated network -- sector clustering, hub assets, edge count.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../results/figures/02_sparse_network.png}
+    \caption{Sparse conditional dependency network estimated via Graphical Lasso.}
+    \label{fig:network}
+\end{figure}
+
+\subsection{Regime Comparison}
+% TODO: report the Jaccard similarity, edge count changes, and any specific
+% edges that appeared/disappeared. This is your core finding -- state it
+% explicitly with numbers, not just qualitatively.
+
+\subsection{Stability Selection}
+% TODO: report how many edges were stable across bootstrap resamples, and
+% whether the regime-comparison finding survives when restricted to stable edges.
+
+\section{Discussion}
+% TODO: financial interpretation (risk concentration, diversification
+% implications), limitations (sample size, stationarity assumptions, the
+% somewhat arbitrary regime split), and honest caveats about what this
+% preliminary study does and does not establish.
+
+\section{Future Work}
+% TODO: concrete, citable extensions -- e.g., time-varying graphical models,
+% joint graphical lasso across regimes \citep{...}, Bayesian sparse estimation.
+% This section is where you can gesture toward directions worth pursuing
+% under supervision.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
