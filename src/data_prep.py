@@ -20,11 +20,26 @@ PROCESSED_DIR = Path("data/processed")
 # Aim for ~50-100 liquid, sector-diverse stocks. Keep the list in a plain text
 # file (data/raw/tickers.txt) so the choice is documented and reproducible.
 TICKERS = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",   # Tech
-    "JPM", "BAC", "GS", "MS", "C",             # Financials
-    "XOM", "CVX", "COP",                        # Energy
-    "JNJ", "PFE", "UNH", "MRK",                 # Healthcare
-    "PG", "KO", "PEP", "WMT",                   # Consumer staples
+    # Technology
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "ADBE", "CRM",
+    # Financials
+    "JPM", "BAC", "GS", "MS", "C", "WFC", "AXP",
+    # Energy
+    "XOM", "CVX", "COP", "SLB", "EOG",
+    # Healthcare
+    "JNJ", "PFE", "UNH", "MRK", "ABBV", "LLY",
+    # Consumer Staples
+    "PG", "KO", "PEP", "WMT", "COST", "CL",
+    # Industrials
+    "BA", "CAT", "GE", "HON", "UPS", "LMT",
+    # Utilities
+    "NEE", "DUK", "SO", "AEP",
+    # Materials
+    "LIN", "APD", "ECL", "FCX",
+    # Communication Services
+    "DIS", "CMCSA", "T", "VZ",
+    # Real Estate
+    "PLD", "AMT", "EQIX", "SPG",
     # TODO: add more to reach your target count, and confirm sector labels
 ]
 
