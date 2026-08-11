@@ -25,11 +25,32 @@ FIG_DIR = Path("results/figures")
 # TODO (Week 1): map each ticker to a sector for color-coding the network plot.
 # Keep this consistent with your ticker list in data_prep.py.
 SECTOR_MAP = {
-    "AAPL": "Tech", "MSFT": "Tech", "GOOGL": "Tech", "AMZN": "Tech", "NVDA": "Tech",
-    "JPM": "Financials", "BAC": "Financials", "GS": "Financials", "MS": "Financials", "C": "Financials",
-    "XOM": "Energy", "CVX": "Energy", "COP": "Energy",
-    "JNJ": "Healthcare", "PFE": "Healthcare", "UNH": "Healthcare", "MRK": "Healthcare",
-    "PG": "Staples", "KO": "Staples", "PEP": "Staples", "WMT": "Staples",
+SECTOR_MAP = {
+    # Technology
+    "AAPL": "Tech", "MSFT": "Tech", "GOOGL": "Tech", "AMZN": "Tech",
+    "NVDA": "Tech", "META": "Tech", "ADBE": "Tech", "CRM": "Tech",
+    # Financials
+    "JPM": "Financials", "BAC": "Financials", "GS": "Financials",
+    "MS": "Financials", "C": "Financials", "WFC": "Financials", "AXP": "Financials",
+    # Energy
+    "XOM": "Energy", "CVX": "Energy", "COP": "Energy", "SLB": "Energy", "EOG": "Energy",
+    # Healthcare
+    "JNJ": "Healthcare", "PFE": "Healthcare", "UNH": "Healthcare",
+    "MRK": "Healthcare", "ABBV": "Healthcare", "LLY": "Healthcare",
+    # Consumer Staples
+    "PG": "Staples", "KO": "Staples", "PEP": "Staples",
+    "WMT": "Staples", "COST": "Staples", "CL": "Staples",
+    # Industrials
+    "BA": "Industrials", "CAT": "Industrials", "GE": "Industrials",
+    "HON": "Industrials", "UPS": "Industrials", "LMT": "Industrials",
+    # Utilities
+    "NEE": "Utilities", "DUK": "Utilities", "SO": "Utilities", "AEP": "Utilities",
+    # Materials
+    "LIN": "Materials", "APD": "Materials", "ECL": "Materials", "FCX": "Materials",
+    # Communication Services
+    "DIS": "Communication", "CMCSA": "Communication", "T": "Communication", "VZ": "Communication",
+    # Real Estate
+    "PLD": "RealEstate", "AMT": "RealEstate", "EQIX": "RealEstate", "SPG": "RealEstate",
 }
 
 SECTOR_COLORS = {
@@ -38,6 +59,11 @@ SECTOR_COLORS = {
     "Energy": "#55A868",
     "Healthcare": "#C44E52",
     "Staples": "#8172B2",
+    "Industrials": "#937860",
+    "Utilities": "#DA8BC3",
+    "Materials": "#8C8C8C",
+    "Communication": "#CCB974",
+    "RealEstate": "#64B5CD",
 }
 
 
