@@ -25,7 +25,6 @@ FIG_DIR = Path("results/figures")
 # TODO (Week 1): map each ticker to a sector for color-coding the network plot.
 # Keep this consistent with your ticker list in data_prep.py.
 SECTOR_MAP = {
-SECTOR_MAP = {
     # Technology
     "AAPL": "Tech", "MSFT": "Tech", "GOOGL": "Tech", "AMZN": "Tech",
     "NVDA": "Tech", "META": "Tech", "ADBE": "Tech", "CRM": "Tech",
