@@ -78,9 +78,9 @@ python src/visualize.py         # generates figures into results/figures/
 
 ## Key Findings
 
-*(Fill in at the end of Week 3 — one or two sentences stating the actual result,
-backed by a number, e.g., "Network density increases by X% during high-volatility
-regimes, concentrated around financial-sector hubs.")*
+- **Structural Regime Shift:** Comparing pre-2020 and post-2020 regimes reveals a significant reorganization in equity dependency structure, yielding a Jaccard edge similarity score of **0.405**.
+- **Market Integration Post-2020:** The number of precision matrix edges grew from **195** (pre-2020) to **266** (post-2020)—a **36.4% increase** in edge density, reflecting systemic coupling during macro market shocks.
+- **Methodological Robustness:** Stability selection via 20-fold bootstrap resampling identified **198 persistent edges** (appearing in $\ge 80\%$ of resamples), demonstrating that the learned network topology represents non-spurious dependencies.
 
 ## Report
 
