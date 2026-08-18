@@ -20,36 +20,40 @@ A Preliminary Study of Conditional Dependency Networks}
 \end{abstract}
 
 \section{Introduction}
-% TODO: Why sparse estimation matters for high-dimensional financial data.
-% - The curse of dimensionality: when the number of assets p is comparable to
-%   or exceeds the number of observations n, the sample covariance matrix is
-%   ill-conditioned or singular.
-% - Sparsity assumption: most pairs of assets are conditionally independent
-%   given the rest -- economically plausible (most companies don't directly
-%   drive each other once broad market/sector factors are accounted for).
-% - Cite 4-6 papers from your Week 1 literature scan here, e.g. \citep{key1}.
-% - State your research question explicitly at the end of this section.
+High-dimensional financial data presents a fundamental challenge for portfolio optimization and systemic risk management: the number of assets ($p$) often approaches or exceeds the number of available temporal observations ($n$). In such regimes, the sample covariance matrix becomes ill-conditioned and highly unstable, leading to spurious correlations and unreliable network estimates.
+
+To address this, sparse inverse covariance estimation—particularly the Graphical Lasso (Glasso) introduced by Friedman, Hastie, and Tibshirani (2008)—has emerged as a robust alternative. By imposing an $L_1$ penalty on the precision matrix $\Theta = \Sigma^{-1}$, Glasso shrinks weak partial correlations to exactly zero, yielding a sparse, interpretable network of conditional dependencies.
+
+This project applies sparse statistical learning to a universe of $p = 54$ high-dimensional financial assets spanning a decade of market data. The primary research questions are twofold:
+\begin{enumerate}
+    \item What is the underlying conditional dependency structure of this equity network?
+    \item How does this network topology reorganize across distinct market regimes, specifically evaluating structural invariance between the pre-2020 and post-2020 periods?
+\end{enumerate}
 
 \section{Data and Methods}
+\subsection{Data Universe}
+The dataset comprises daily closing prices for $p = 54$ U.S. equities, selected to represent a diverse cross-section of major market sectors (including Technology, Financials, Energy, Healthcare, and Consumer Staples). The observation window spans from January 1, 2015, to December 31, 2024, yielding $T = 2,514$ trading days. Raw prices were converted to daily log returns to ensure stationarity and comparability across assets.
 
-\subsection{Data}
-% TODO: ticker universe, source (Yahoo Finance), date range, frequency,
-% missing-data handling. Reference Table~\ref{tab:summary} if you add one.
-
-\subsection{Sparse Precision Matrix Estimation}
-% TODO: Define the Graphical Lasso objective:
-% \[
-%   \hat{\Theta} = \arg\max_{\Theta \succ 0} \; \log\det\Theta -
-%   \mathrm{tr}(S\Theta) - \lambda \|\Theta\|_1
-% \]
-% where $S$ is the sample covariance matrix and $\lambda$ controls sparsity.
-% Explain the cross-validation procedure used to select $\lambda$.
+\subsection{Graphical Lasso Formulation}
+We estimate the sparse precision matrix $\hat{\Theta}$ by maximizing the $L_1$-penalized log-likelihood over the sample covariance matrix $S$:
+\begin{equation}
+\hat{\Theta} = \arg\max_{\Theta \succ 0} \left( \log \det \Theta - \text{tr}(S\Theta) - \lambda \|\Theta\|_1 \right)
+\end{equation}
+where $\lambda > 0$ controls the degree of sparsity, and $\|\Theta\|_1 = \sum_{i,j} |\theta_{ij}|$ represents the element-wise $L_1$ norm.
 
 \subsection{Regime Comparison}
-% TODO: describe the two (or more) time windows compared and why they were chosen.
+To evaluate structural invariance across temporal regimes, the total observation window $T = 2,514$ was partitioned into two disjoint subsets:
+\begin{itemize}
+    \item \textbf{Regime A (Pre-2020):} January 1, 2015 -- December 31, 2019 ($T_A = 1,257$ observations).
+    \item \textbf{Regime B (Post-2020):} January 1, 2020 -- December 31, 2024 ($T_B = 1,257$ observations).
+\end{itemize}
+A separate Graphical Lasso model was fitted to each regime. The topological similarity between the two resulting edge sets $E_A$ and $E_B$ was quantified using the Jaccard index:
+\begin{equation}
+J(E_A, E_B) = \frac{|E_A \cap E_B|}{|E_A \cup E_B|}
+\end{equation}
 
 \subsection{Stability Selection}
-% TODO: describe the bootstrap resampling procedure and the stability threshold used.
+A known limitation of single-run penalized estimation is its sensitivity to the specific sample drawn. To ensure edge persistence is not driven by finite-sample variance, we employed stability selection (Meinshausen and Bühlmann, 2010). The model was refitted across $B = 20$ bootstrap resamples of the data. Edges satisfying a selection probability threshold of $\pi_{\text{thr}} \ge 0.80$ were classified as ``stable,'' providing a rigorous measure of statistical robustness against spurious dependencies.
 
 \section{Results}
 
